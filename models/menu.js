@@ -4,11 +4,11 @@ const menuSchema = Schema(
   {
     name: {
       type: String,
-      required: [true, 'Set name for contact'],
+      required: [true, 'Set name for product'],
     },
     photo: {
       type: String,
-      default:null,
+      default: null,
     },
     price: {
       type: Number,
