@@ -1,26 +1,20 @@
-// const { Contact } = require('../../models/index');
-// const createError = require('http-errors');
-
+const { Menu } = require('../../models/index');
+const createError = require('http-errors');
 const { catchAsync } = require('../../utils/index');
 
 const getShopMenu = catchAsync(async (req, res, next) => {
-//   const { contactId } = req.params;
-//   const { _id } = req.user;
+  const { menuId } = req.params;
 
-//   const result = await Contact.findById(contactId, _id).populate(
-//     'owner',
-//     '_id name email'
-//   );
+  const result = await Menu.find({ owner: menuId });
+  if (!result) {
+    throw createError(404, `Shop with id ${menuId} not found`);
+  }
 
-//   if (!result) {
-//     throw createError(404, `Contact with id ${contactId} not found`);
-//   }
-
-//   res.json({
-//     status: 'success',
-//     code: 200,
-//     data: { result },
-//   });
+  res.status(200).json({
+    status: 'success',
+    code: 200,
+    data: { result },
+  });
 });
 
 module.exports = getShopMenu;
