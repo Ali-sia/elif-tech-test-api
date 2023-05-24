@@ -1,5 +1,4 @@
 const { catchAsync } = require('../../utils/index');
-// const { userLoginValidator } = require('../../utils');
 const { Shop } = require('../../models/index');
 
 const getAllShops = catchAsync(async (req, res, next) => {
