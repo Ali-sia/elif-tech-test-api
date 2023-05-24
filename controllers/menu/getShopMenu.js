@@ -5,7 +5,7 @@ const { catchAsync } = require('../../utils/index');
 const getShopMenu = catchAsync(async (req, res, next) => {
   const { menuId } = req.params;
 
-  const result = await Menu.find({ owner: menuId });
+  const data = await Menu.find({ owner: menuId });
   if (!result) {
     throw createError(404, `Shop with id ${menuId} not found`);
   }
@@ -13,7 +13,7 @@ const getShopMenu = catchAsync(async (req, res, next) => {
   res.status(200).json({
     status: 'success',
     code: 200,
-    data: { result },
+    data,
   });
 });
 

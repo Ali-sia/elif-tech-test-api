@@ -15,12 +15,12 @@ const addMenuItem = catchAsync(async (req, res, next) => {
     throw createError(400, 'missing required name field');
   }
 
-  const result = await Menu.create({ name, photo, price, owner });
+  const data = await Menu.create({ name, photo, price, owner });
 
   res.status(201).json({
     status: 'added',
     code: 201,
-    data: { result },
+    data,
   });
 });
 
