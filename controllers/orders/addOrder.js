@@ -1,44 +1,32 @@
-// const createError = require('http-errors');
-// const jwt = require('jsonwebtoken');
-
 const { catchAsync } = require('../../utils/index');
-// const { userLoginValidator } = require('../../utils');
-// const { User } = require('../../models/index');
-
-// const { SECRET_KEY } = process.env;
+const { orderValidator } = require('../../utils');
+const createError = require('http-errors');
+const { Order } = require('../../models/index');
 
 const addOrder = catchAsync(async (req, res, next) => {
-//   const { email, password } = req.body;
+  const { client, orderItems } = req.body;
 
-//   const { error } = userLoginValidator({
-//     email,
-//     password,
-//   });
-//   if (error) {
-//     throw createError(400, error.message);
-//   }
+  const { name, email, phone, address } = client;
 
-//   const user = await User.findOne({ email }).select('+password');
+  const { error } = orderValidator({
+    client,
+    orderItems,
+  });
+  if (error) {
+    throw createError(400, error.message);
+  }
 
-//   if (!user || !user.verify || !(await user.checkPassword(password))) {
-//     throw createError(401, `"Email or password or verify is wrong"`);
-//   }
+  if (!name || !phone || !address) {
+    throw createError(400, 'missing required name field');
+  }
 
-//   const payload = { id: user._id };
-//   const token = jwt.sign(payload, SECRET_KEY, { expiresIn: '1d' });
-//   await User.findByIdAndUpdate(user._id, { token });
+  const data = await Order.create({ client, orderItems });
 
-//   res.status(200).json({
-//     status: 'ok',
-//     code: 200,
-//     token,
-//     data: {
-//       user: {
-//         email: user.email,
-//         subscription: user.subscription,
-//       },
-//     },
-//   });
+  res.status(201).json({
+    status: 'added',
+    code: 201,
+    data,
+  });
 });
 
 module.exports = addOrder;
