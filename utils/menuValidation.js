@@ -3,8 +3,9 @@ const Joi = require('joi');
 const menuValidator = data => {
   const schema = Joi.object({
     name: Joi.string().min(3).max(60).required(),
-    price: Joi.number.min(0.00001),
+    price: Joi.number().positive().greater(0.01).required(),
     photo: Joi.string().allow(''),
+    owner: Joi.string().required(),
   });
 
   return schema.validate(data);
