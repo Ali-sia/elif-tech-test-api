@@ -3,13 +3,23 @@ const { Schema, model } = require('mongoose');
 const orderSchema = Schema(
   {
     client: {
-      type: Object,
-      required: true,
-    },
-    orderItems: {
-        type: Array,
+      name: {
+        type: String,
         required: true,
       },
+      email: {
+        type: String,
+      },
+      phone: {
+        type: String,
+        required: true,
+      },
+      address: {
+        type: String,
+        required: true,
+      },
+    },
+    orderItems: {},
   },
   { versionKey: false, timestamps: true }
 );
