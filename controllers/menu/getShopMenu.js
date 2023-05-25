@@ -3,11 +3,11 @@ const createError = require('http-errors');
 const { catchAsync } = require('../../utils/index');
 
 const getShopMenu = catchAsync(async (req, res, next) => {
-  const { menuId } = req.params;
+  const { menusId } = req.params;
 
-  const data = await Menu.find({ owner: menuId });
-  if (!result) {
-    throw createError(404, `Shop with id ${menuId} not found`);
+  const data = await Menu.find({ owner: menusId });
+  if (!data) {
+    throw createError(404, `Shop with id ${menusId} not found`);
   }
 
   res.status(200).json({
