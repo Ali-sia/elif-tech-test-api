@@ -19,11 +19,7 @@ const orderSchema = Schema(
         required: true,
       },
     },
-    orderItems: {
-      type: Schema.Types.ObjectId,
-      ref: 'shop',
-      required: true,
-    },
+    orderItems: { type: Array },
   },
   { versionKey: false, timestamps: true }
 );
