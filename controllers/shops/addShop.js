@@ -1,8 +1,7 @@
+const createError = require('http-errors');
+const { Shop } = require('../../models/index');
 const { catchAsync } = require('../../utils/index');
 const { shopValidator } = require('../../utils');
-const createError = require('http-errors');
-
-const { Shop } = require('../../models/index');
 
 const addShop = catchAsync(async (req, res, next) => {
   const { name } = req.body;

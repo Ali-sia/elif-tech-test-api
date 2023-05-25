@@ -1,5 +1,5 @@
-const { Menu } = require('../../models/index');
 const createError = require('http-errors');
+const { Menu } = require('../../models/index');
 const { catchAsync } = require('../../utils/index');
 
 const getShopMenu = catchAsync(async (req, res, next) => {

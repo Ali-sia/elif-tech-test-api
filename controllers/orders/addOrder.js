@@ -1,12 +1,12 @@
-const { catchAsync } = require('../../utils/index');
-const { orderValidator } = require('../../utils');
 const createError = require('http-errors');
 const { Order } = require('../../models/index');
+const { catchAsync } = require('../../utils/index');
+const { orderValidator } = require('../../utils');
 
 const addOrder = catchAsync(async (req, res, next) => {
   const { client, orderItems } = req.body;
 
-  const { name, email, phone, address } = client;
+  const { name, phone, address } = client;
 
   const { error } = orderValidator({
     client,
