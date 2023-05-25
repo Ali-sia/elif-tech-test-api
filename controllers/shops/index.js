@@ -1,4 +1,4 @@
-const getAllShops = require('./getAllshops');
+const getAllShops = require('./getAllShops');
 const addShop = require('./addShop');
 
 module.exports = {
