@@ -5,7 +5,7 @@ const cors = require('cors');
 require('dotenv').config();
 
 const shopsRouter = require('./routes/api/shops');
-const menuRouter = require('./routes/api/menu');
+const menuRouter = require('./routes/api/menus');
 const ordersRouter = require('./routes/api/orders');
 
 const app = express();
@@ -18,7 +18,7 @@ app.use(express.json());
 app.use(express.static('public'));
 
 app.use('/api/shops', shopsRouter);
-app.use('/api/menu', menuRouter);
+app.use('/api/menus', menuRouter);
 app.use('/api/orders', ordersRouter);
 
 app.use((req, res) => {
