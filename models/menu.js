@@ -13,6 +13,10 @@ const menuSchema = Schema(
     price: {
       type: Number,
     },
+    quantity: {
+      type: Number,
+      default: 1,
+    },
     owner: {
       type: Schema.Types.ObjectId,
       ref: 'shop',

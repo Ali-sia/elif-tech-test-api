@@ -8,12 +8,7 @@ const orderValidator = data => {
       phone: Joi.string().min(3).max(16).allow(''),
       address: Joi.string().min(10).max(160).allow(''),
     }),
-    orderItems: Joi.array().items(
-      Joi.object({
-        menuItem: Joi.string().required(),
-        quantity: Joi.number().positive().greater(0),
-      })
-    ),
+    orderItems: Joi.string().required(),
   });
 
   return schema.validate(data);
