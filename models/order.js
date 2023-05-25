@@ -19,7 +19,18 @@ const orderSchema = Schema(
         required: true,
       },
     },
-    orderItems: {},
+    orderItems: [
+      {
+        menuItem: {
+          type: String,
+          required: true,
+        },
+        quantity: {
+          type: Number,
+          default: 1,
+        },
+      },
+    ],
   },
   { versionKey: false, timestamps: true }
 );
